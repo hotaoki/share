@@ -66,7 +66,6 @@ with open(save_path, mode='w', newline='') as f:
     for i in range(len(x)):
         writer.writerow([x[i], y[i]])
 
-
 # Tkinterのルートウィンドウを作成
 root = tk.Tk()
 root.withdraw()
@@ -107,14 +106,15 @@ plt.yticks([])
 plt.xticks(range(0, int(max(x))+11, 10))
 
 # 凡例を右上に表示する
-legend_text = input("凡例を入力してください：")
-plt.legend([legend_text], loc='upper right')
+file_name = file_path.split('/')[-1].split('.')[0]
+plt.legend([file_name], loc='upper right')
 
-# グラフを表示
-plt.show()
-
-# グラフを画像として保存 # ファイルを開くダイアログを表示し、ファイルパスを取得する
+# ファイルを保存
 root = tk.Tk()
 root.withdraw()
 file_path = filedialog.asksaveasfilename(defaultextension='.png')
-plt.savefig(file_path)
+if file_path:
+    plt.savefig(file_path)
+
+# グラフを表示
+plt.show()
