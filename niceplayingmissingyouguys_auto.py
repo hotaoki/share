@@ -3,6 +3,42 @@ from tkinter import filedialog
 import csv
 import matplotlib.pyplot as plt
 
+# ウィンドウを作成する
+root = tk.Tk()
+root.geometry("100x50")
+# ラベルを作成する
+label = tk.Label(root, text="1.textファイルを選択")
+label.pack()
+# OKボタンを作成する
+button = tk.Button(root, text="OK", command=root.destroy)
+button.pack()
+# メインループを開始する
+root.mainloop()
+
+# ウィンドウを作成する
+root = tk.Tk()
+root.geometry("100x50")
+# ラベルを作成する
+label = tk.Label(root, text="2.csvファイルを命名")
+label.pack()
+# OKボタンを作成する
+button = tk.Button(root, text="OK", command=root.destroy)
+button.pack()
+# メインループを開始する
+root.mainloop()
+
+# ウィンドウを作成する
+root = tk.Tk()
+root.geometry("170x55")
+# ラベルを作成する
+label = tk.Label(root, text="3.グラフ化（注釈は自己記入）")
+label.pack()
+# OKボタンを作成する
+button = tk.Button(root, text="OK", command=root.destroy)
+button.pack()
+# メインループを開始する
+root.mainloop()
+
 # Tkinterのルートウィンドウを作成
 root = tk.Tk()
 root.withdraw()
