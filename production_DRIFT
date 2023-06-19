@@ -1,0 +1,41 @@
+import os
+import glob
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# CSVファイルが格納されているフォルダのパス
+folder_path = r'C:\Users\f1c256b\Desktop\python\data\drift\230619'
+# フォルダ内の全てのCSVファイルを取得
+file_paths = glob.glob(os.path.join(folder_path, '*.csv'))
+
+# グラフの大きさを変更するためのパラメータ
+fig_width = 10  # グラフの幅（インチ）
+fig_height = 6  # グラフの高さ（インチ）
+
+# グラフを作成する
+plt.figure(figsize=(fig_width, fig_height))
+# 各CSVファイルのデータを追加する
+for file_path in file_paths:
+    # ファイル名から凡例用のラベルを取得
+    filename = os.path.basename(file_path)
+    # ファイル名から不要な情報を取り除く
+    label = filename.split(" ")[0:4]
+    label = " ".join(label)
+    # CSVファイルを読み込む
+    data = pd.read_csv(file_path)
+
+    # グラフにデータを追加
+    plt.plot(data.iloc[:, 0], data.iloc[:, 1], label=label, linewidth=0.5)
+
+# 凡例を表示する
+
+plt.xlabel('Wavenumber (cm^-1)')
+plt.ylabel('Transmittance (-)')
+plt.gca().invert_xaxis()
+plt.tick_params(which='both', direction='in')
+plt.xlim(1000, 4000)
+plt.ylim(-0.02, 0.1)
+plt.legend(fontsize='small', loc='center left')
+
+# グラフを表示する
+plt.show()
